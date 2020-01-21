@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h2>Are Your Dice Fair or Foul?</h2>
-<h3>Find out below with our Mystic Calculator!</h3>
+	<h2>Are Your Dice Fair or Foul?</h2>
+	<h3>Find out below with our Mystic Calculator!</h3>
+	<br>
+	<form>
+		{% csrf_token %}
+		{{ form }}
+		<br>
+		<button type="submit">Upload</button>
+	</form>
 {% endblock %}

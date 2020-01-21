@@ -2,6 +2,7 @@ body{
 	background-color: black;
 	background-repeat: no-repeat;
 	background-size: auto;
+	font-family: 'Dancing Script', cursive;
 }
 
 #main{
@@ -21,3 +22,10 @@ body{
 	width: auto;
 	margin-top: 10%;
 	justify-content: center;
+}
+
+form{
+	text-align: center;
+	float: center;
+	justify-content: center;
+}

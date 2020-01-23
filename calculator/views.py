@@ -16,7 +16,13 @@ def index(request):
 	return render(request, 'home.html', {'form':form})
 
 def about(request):
-	return render(request, 'about.html')
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			pass # Fill this in later.
+	else:
+		form = ContactForm()
+	return render(request, 'about.html', {'form':form})
 
 def results(request):
 	return render(request, 'results.html')

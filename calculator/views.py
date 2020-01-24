@@ -8,9 +8,12 @@ import pandas as pd
 
 def index(request):
 	if request.method == 'POST':
-		form = UploadForm(request.POST)
+		form = UploadForm(request.POST, request.FILES)
+		print("Step 1")
 		if form.is_valid():
-			pass # Add and action here later.
+			print("Success")
+		else:
+			print("Fail")
 	else:
 		form = UploadForm()
 	return render(request, 'home.html', {'form':form})

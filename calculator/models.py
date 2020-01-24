@@ -20,9 +20,11 @@ class ChiTab(models.Model):
 		'p_01':self.p_01, 'p_005':self.p_005}
 
 
+'''
 class SampleData(models.Model):
 	Side = models.IntegerField()
 	Number_of_Observations = models.IntegerField()
 
 	def to_dic(self):
 		return{'Side':self.Side, 'Number_of_Observations':self.Number_of_Observations}
+'''

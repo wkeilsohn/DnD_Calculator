@@ -4,10 +4,15 @@
 	<h2>Are Your Dice Fair or Foul?</h2>
 	<h3>Find out below with our Mystic Calculator!</h3>
 	<br>
-	<form>
+	<form action="/home/" method="POST" style="text-align: center;" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form }}
+		{% for field in form %}
+			{{ field.label }}
+			<br>
+			{{ field }}
+			<br>
+		{% endfor %}
 		<br>
-		<button type="submit">Upload</button>
+		<input type="submit" value="Upload">
 	</form>
 {% endblock %}

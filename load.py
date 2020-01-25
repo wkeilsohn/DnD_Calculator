@@ -1,7 +1,7 @@
 import pandas as pd
 from calculator.models import *
 
-#path = 
+#path = #Find file path.
 file = path + 'chitab.csv'
 
 df = pd.read_csv(file)

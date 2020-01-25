@@ -49,8 +49,15 @@ def results(request):
 		df = request.session['df']
 		df = pd.read_json(df)
 		#
+		chi_val = 7# declare a value for the chi square here.
+		# Calcuate related p-value below
+		p_value =  0.01 
+		if p_value < 0.05:
+			verdict = "Fair"
+		else:
+			verdict = "Foul"
 		del request.session['df']
-		return render(request, 'results.html')
+		return render(request, 'results.html', {'chi_val': chi_val, 'p_value': p_value, 'verdict': verdict})
 	except:
 		return redirect('/home/')
 

@@ -6,6 +6,7 @@ import os
 import io
 from io import BytesIO
 import pandas as pd
+from calculator.math import *
 
 def index(request):
 	try:
@@ -48,10 +49,10 @@ def results(request):
 	try:
 		df = request.session['df']
 		df = pd.read_json(df)
-		#
-		chi_val = 7# declare a value for the chi square here.
-		# Calcuate related p-value below
-		p_value =  0.01 
+		freedeg = chiSquare.degFree(df)
+		chi_val = chiSquare.calcChi(df)
+		p_value =  chiSquare.pFinder(freedeg, chi_val)
+		print("check3")
 		if p_value < 0.05:
 			verdict = "Fair"
 		else:

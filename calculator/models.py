@@ -1,17 +1,17 @@
 from django.db import models
 
 class ChiTab(models.Model):
-	DegreeFreedom = models.IntegerField()
-	p_995 = models.FloatField()
-	p_99 = models.FloatField()
-	p_975 = models.FloatField()
-	p_95 = models.FloatField()
-	p_9 = models.FloatField()
-	p_1 = models.FloatField()
-	p_05 = models.FloatField()
-	p_025 = models.FloatField()
-	p_01 = models.FloatField()
-	p_005 = models.FloatField()
+	DegreeFreedom = models.IntegerField(null=False, blank=False)
+	p_995 = models.FloatField(null=False, blank=False)
+	p_99 = models.FloatField(null=False, blank=False)
+	p_975 = models.FloatField(null=False, blank=False)
+	p_95 = models.FloatField(null=False, blank=False)
+	p_9 = models.FloatField(null=False, blank=False)
+	p_1 = models.FloatField(null=False, blank=False)
+	p_05 = models.FloatField(null=False, blank=False)
+	p_025 = models.FloatField(null=False, blank=False)
+	p_01 = models.FloatField(null=False, blank=False)
+	p_005 = models.FloatField(null=False, blank=False)
 
 	def to_dic(self):
 		return {'DegreeFreedom':self.DegreeFreedom, 'p_995':self.p_995,	'p_99':self.p_99, 'p_975':self.p_975,\

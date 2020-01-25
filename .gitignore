@@ -4,3 +4,4 @@ lib/
 include/
 images/
 settings.py
+migrations/

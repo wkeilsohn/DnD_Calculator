@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from .forms import *
 import os
 import io
@@ -7,15 +8,31 @@ from io import BytesIO
 import pandas as pd
 
 def index(request):
-	if request.method == 'POST':
-		form = UploadForm(request.POST, request.FILES)
-		print("Step 1")
-		if form.is_valid():
-			print("Success")
+	try:
+		df = request.session['df']
+		del request.session['df']
+		del df
+		return redirect('/home/')
+	except:
+		if request.method == 'POST':
+			form = UploadForm(request.POST, request.FILES)
+			if form.is_valid():
+				file = request.FILES['file']
+				name, extension = os.path.splitext(file.name)
+				if extension == '.csv':
+					df = pd.read_csv(file)
+				elif extension == 'xlsx':
+					df = pd.read_excel(file)
+				else:
+					messages.error(request, 'Incorrect File Type')
+					return redirect('/home/')
+				df = df.to_json(orient = 'index')
+				request.session['df'] = df
+				return redirect('/results/')
+			else:
+				messages.error(request, 'Form Failed to Submit')
 		else:
-			print("Fail")
-	else:
-		form = UploadForm()
+			form = UploadForm()
 	return render(request, 'home.html', {'form':form})
 
 def about(request):
@@ -28,7 +45,14 @@ def about(request):
 	return render(request, 'about.html', {'form':form})
 
 def results(request):
-	return render(request, 'results.html')
+	try:
+		df = request.session['df']
+		df = pd.read_json(df)
+		#
+		del request.session['df']
+		return render(request, 'results.html')
+	except:
+		return redirect('/home/')
 
 def example(request):
 	path = os.path.dirname(__file__)

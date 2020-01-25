@@ -52,11 +52,11 @@ def results(request):
 		freedeg = chiSquare.degFree(df)
 		chi_val = chiSquare.calcChi(df)
 		p_value =  chiSquare.pFinder(freedeg, chi_val)
-		print("check3")
+		print("check2")
 		if p_value < 0.05:
-			verdict = "Fair"
+			verdict = "Foul" # A chi square test looks to see that things are DIFFERENT from the norm... so in this case you don't want a positive/significant result. 
 		else:
-			verdict = "Foul"
+			verdict = "Fair"
 		del request.session['df']
 		return render(request, 'results.html', {'chi_val': chi_val, 'p_value': p_value, 'verdict': verdict})
 	except:

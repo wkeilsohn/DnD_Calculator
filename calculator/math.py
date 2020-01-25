@@ -23,18 +23,27 @@ class chiSquare():
 		c = ChiTab.objects.filter(DegreeFreedom=0)
 		for i in c:
 			refvals = i.to_ls()
-		val = refvals[num]
+		ddist = len(refvals)
+		if num == 0:
+			val = refvals[num]
+		elif num < ddist:
+			val = refvals[num - 1]
+		else:
+			val = refvals[ddist - 1]
 		return val
 
 	def pFinder(freedeg, chi):
+		freedeg = int(freedeg)
 		c = ChiTab.objects.filter(DegreeFreedom=freedeg)
 		for i in c:
 			chils = i.to_ls()
 		y = 0
+		print(chi)
 		for j in chils:
 			if chi > j:
 				y = y + 1
 				pass
 			else:
-				pval = chiSquare.mapper(y - 1)
+				break
+		pval = chiSquare.mapper(y)
 		return pval

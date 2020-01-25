@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.core.mail import send_mail, EmailMessage
+from django.conf import settings
 from .forms import *
 import os
 import io
 from io import BytesIO
 import pandas as pd
 from calculator.math import *
+from calculator.note import *
 
 def index(request):
 	try:
@@ -40,7 +43,19 @@ def about(request):
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		if form.is_valid():
-			pass # Fill this in later.
+			semail = form.cleaned_data['email']
+			smessage = form.cleaned_data['message']
+			try:
+				subject = 'DnD Site Inquery'
+				message = noteWriter(semail, smessage)
+				email_from = settings.EMAIL_HOST_USER
+				recipient_list = ['librarywebdeveloper@gmail.com']
+				send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+				messages.success(request, "Email Sent")
+			except:
+				messages.error(request, "Email Failed to Send")
+		else:
+			messages.error(request, "Email Failed to Send")
 	else:
 		form = ContactForm()
 	return render(request, 'about.html', {'form':form})

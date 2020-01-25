@@ -5,3 +5,4 @@ include/
 images/
 settings.py
 migrations/
+email.py

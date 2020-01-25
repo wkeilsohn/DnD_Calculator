@@ -3,11 +3,15 @@
 {% block content %}
 <h1>Welcome Weary Traveler</h1>
 <p>
-	...about...
+	Are your dice foul or fair?<br>
+	Do they tumble towards victory or defeat?<br>
+	Are the odds ever in your favor?
+	Is fate pulling you down a dark path?<br>
+	<br>
+	We can find the answers to those questions.<br>
+	Just role your dice and put our services to work.
+	<br>
 </p>
-
-
-
 <div id='contact'>
 	<h2>Contact Us</h2>
 	<p>
@@ -15,7 +19,7 @@
 		Need Answers?
 		Contact us below!
 	</p>
-	<form>
+	<form action="/about/" method="POST" style="text-align: center;" enctype="multipart/form-data">
 		{% csrf_token %}
 		{% for field in form %}
 			{{ field.label }}
@@ -24,7 +28,7 @@
 			<br>
 		{% endfor %}
 		<br>
-		<button type="submit">Send</button>
+		<input type="submit" value="Send">
 	</form>
 </div>
 {% endblock %}

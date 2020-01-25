@@ -19,19 +19,22 @@ class chiSquare():
 			chi = chi + z
 		return chi
 
+	def mapper(num):
+		c = ChiTab.objects.filter(DegreeFreedom=0)
+		for i in c:
+			refvals = i.to_ls()
+		val = refvals[num]
+		return val
+
 	def pFinder(freedeg, chi):
-		c1 = ChiTab(DegreeFreedom=freedeg)
-		c2 = ChiTab(DegreeFreedom=0)
-		cdict = c1.to_dic()
-		cdf = pd.from_dict(cdict)
-		x = 0
-		for index, row in cdf.iterrows():
-			for i in row:
-				if row[i] < chi:
-					pass
-				else:
-					x = i
-					break
-		print(x)
-		return 0.4
-#		return pval
+		c = ChiTab.objects.filter(DegreeFreedom=freedeg)
+		for i in c:
+			chils = i.to_ls()
+		y = 0
+		for j in chils:
+			if chi > j:
+				y = y + 1
+				pass
+			else:
+				pval = chiSquare.mapper(y - 1)
+		return pval

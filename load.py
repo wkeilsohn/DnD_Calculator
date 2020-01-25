@@ -14,7 +14,7 @@ def addData():
 	for index, row in df.iterrows():
 		ls = []
 		for i in range(1, len(row)):
-			z = [float(row[i])]
+			z = [round(float(row[i]), 3)]
 			ls = ls + z
 		try:
 			ch = ChiTab(DegreeFreedom=int(row[0]), p_995=ls[0], p_99=ls[1], p_975=ls[2],\
@@ -22,7 +22,7 @@ def addData():
 				p_01=ls[8], p_005=ls[9])
 			ch.save()
 		except:
-			x = x +1
+			x = x + 1
 	print(str(x) + ' Rows failed to be added to the database.')
 
 def fullLoader():

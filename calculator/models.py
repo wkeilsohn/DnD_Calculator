@@ -2,16 +2,16 @@ from django.db import models
 
 class ChiTab(models.Model):
 	DegreeFreedom = models.IntegerField(null=False, blank=False)
-	p_995 = models.FloatField(null=False, blank=False)
-	p_99 = models.FloatField(null=False, blank=False)
-	p_975 = models.FloatField(null=False, blank=False)
-	p_95 = models.FloatField(null=False, blank=False)
-	p_9 = models.FloatField(null=False, blank=False)
-	p_1 = models.FloatField(null=False, blank=False)
-	p_05 = models.FloatField(null=False, blank=False)
-	p_025 = models.FloatField(null=False, blank=False)
-	p_01 = models.FloatField(null=False, blank=False)
-	p_005 = models.FloatField(null=False, blank=False)
+	p_995 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_99 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_975 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_95 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_9 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_1 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_05 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_025 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_01 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
+	p_005 = models.DecimalField(null=False, blank=False, decimal_places=3, max_digits=7)
 
 	def to_dic(self):
 		return {'DegreeFreedom':self.DegreeFreedom, 'p_995':self.p_995,	'p_99':self.p_99, 'p_975':self.p_975,\

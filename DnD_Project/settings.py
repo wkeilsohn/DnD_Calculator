@@ -33,7 +33,7 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 SECRET_KEY = 'v9gfg4=%_hp3h7dm^mi-yz1yg=9^^7ymh-)o)2vdv4^78r^&z9' # Change This!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # Change This! # Can't find static files.
+DEBUG = True # Change This!
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -130,9 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "calculator/static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, "calculator/static")
 
 '''
 For some reason this breaks the server... can't find javascript.

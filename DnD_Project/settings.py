@@ -33,9 +33,9 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 SECRET_KEY = 'v9gfg4=%_hp3h7dm^mi-yz1yg=9^^7ymh-)o)2vdv4^78r^&z9' # Change This!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # Change This!
+DEBUG = True # Change This! # Can't find static files.
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -129,3 +129,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "calculator/static"),
+]
+
+'''
+For some reason this breaks the server... can't find javascript.
+
+# Activate Django-Heroku.
+import django_heroku
+django_heroku.settings(locals())
+
+'''

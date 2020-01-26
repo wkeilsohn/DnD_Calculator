@@ -7,3 +7,6 @@ urlpatterns = [
 	path('about/', include('calculator.urls')),
 #    path('admin/', admin.site.urls), # Just not necessary for this project.
 ]
+
+handler_404 = 'calculator.views.handler_404'
+handler_500 = 'calculator.views.handler_500'

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import send_mail
 from django.conf import settings
+from django.views.defaults import page_not_found
 from .forms import *
 import os
 import io
@@ -67,7 +68,6 @@ def results(request):
 		freedeg = chiSquare.degFree(df)
 		chi_val = chiSquare.calcChi(df)
 		p_value =  chiSquare.pFinder(freedeg, chi_val)
-		print("check2")
 		if p_value < 0.05:
 			verdict = "Foul" # A chi square test looks to see that things are DIFFERENT from the norm... so in this case you don't want a positive/significant result. 
 		else:
@@ -87,3 +87,10 @@ def example(request):
 		data.to_excel(writer, sheet_name='Example')
 		writer.save()
 		return HttpResponse(b.getvalue(), content_type='application/vnd.ms-excel')
+
+
+def handler_404(request):
+	return page_not_found(request, '404.html', status=404)
+
+def handler_500(request):
+	return page_not_found(request, '500.html', status=500)

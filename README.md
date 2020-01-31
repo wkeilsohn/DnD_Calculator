@@ -8,6 +8,10 @@ Users simply upload a spread sheet (example provided) with the number of sides t
 
 The site will then compute a Chi Square value and inform the user if the value indicates the dice are loaded or not. 
 
+A live version can be found here:
+
+https://dnd-chi.herokuapp.com/
+
 ## Support
 
 Contacting me is the best way to obtain support. 

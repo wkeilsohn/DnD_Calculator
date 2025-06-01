@@ -10,7 +10,9 @@ The site will then compute a Chi Square value and inform the user if the value i
 
 A live version can be found here:
 
-https://dnd-chi.herokuapp.com/
+<del>https://dnd-chi.herokuapp.com/</del>
+
+As of 2025, Heroku's pricing has made it unsustainable to continue hosting there. Currently, I am looking for new hosting options. 
 
 ## Support
 
